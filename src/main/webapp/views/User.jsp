@@ -52,7 +52,7 @@
     <tr>
         <th scope="col">#</th>
         <th scope="col">UserName</th>
-        <th scope="col">PassWord</th>
+        <th scope="col">Image</th>
         <th scope="col">Country</th>
         <th scope="col" colspan="2">Action</th>
     </tr>
@@ -62,7 +62,9 @@
         <tr>
             <th scope="row">${status.index + 1}</th>
             <td>${user.name}</td>
-            <td>${user.password}</td>
+            <td>
+                <img src="${user.image}" alt="image" width="50px" height="50px">
+            </td>
             <td>${user.country}</td>
             <td>
                 <button type="button" class="btn btn-primary"

@@ -1,9 +1,10 @@
 package router.model;
 
 public class UserUpdate {
-    String name = null;
-    String password = null;
-    String country = null;
+    public String name = null;
+    public String password = null;
+    public String country = null;
+    public String image = null;
 
     public UserUpdate() {
     }
@@ -18,5 +19,9 @@ public class UserUpdate {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

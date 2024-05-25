@@ -5,15 +5,18 @@ public class User {
     String name;
     String password;
 
+    String image;
+
     String country;
 
     public User() {
     }
 
-    public User( String name, String password, String country) {
+    public User( String name, String password, String country, String image) {
         this.name = name;
         this.password = password;
         this.country = country;
+        this.image = image;
     }
 
     public Integer getId() {
@@ -46,6 +49,14 @@ public class User {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     @Override

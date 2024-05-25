@@ -1,6 +1,6 @@
 package router.controller;
 
-import router.interfaces.UserServiceI;
+import router.service.UserServiceI;
 import router.model.User;
 import router.model.UserUpdate;
 import router.service.UserService;
@@ -9,7 +9,6 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
 @WebServlet(name = "UserControler", value = "/users")
@@ -67,34 +66,36 @@ public class UserControler extends HttpServlet {
                     addUser(request, response);
                     break;
                 case "UPDATE":
-                    updateUser(request, response);
+                    // Cập nhật user
+                    Integer id = Integer.parseInt(request.getParameter("id"));
+                    User user = getUser(request);
+                    user.setId(id);
+                    userService.addUser(user);
+                    response.sendRedirect("users?action=LIST");
+                    break;
                 default:
                     break;
             }
         }
     }
 
+private User getUser(HttpServletRequest request) {
+        String name = request.getParameter("name");
+        String password = request.getParameter("password");
+        String country = request.getParameter("country");
+        String image = request.getParameter("image");
+        return new User(name, password, country, image);
+    }
 
     private void addUser(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String userName = request.getParameter("name");
         String password = request.getParameter("password");
         String country = request.getParameter("country");
-        userService.addUser(new User(userName, password, country));
+        String image = request.getParameter("image");
+        userService.addUser(new User(userName, password, country, image));
         response.sendRedirect("users?action=LIST");
     }
 
-    private void updateUser(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        Integer id = Integer.parseInt(request.getParameter("id"));
-        String name = request.getParameter("name");
-        String password = request.getParameter("password");
-        String country = request.getParameter("country");
-        UserUpdate userUpdate = new UserUpdate();
-        userUpdate.setName(name);
-        userUpdate.setPassword(password);
-        userUpdate.setCountry(country);
-        userService.updateUser(id, userUpdate);
-        response.sendRedirect("users?action=LIST");
-    }
 
     private void getUserByCountry(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String keyword = request.getParameter("keyword");
