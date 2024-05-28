@@ -1,0 +1,26 @@
+plugins {
+    id 'java'
+
+}
+sourceCompatibility = 18
+targetCompatibility = 18
+group = 'org.shiba'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    flatDir{
+        dirs 'libs'
+    }
+}
+
+dependencies {
+    implementation name :'quaty'
+    implementation name : 'InputValidator_us'
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}
