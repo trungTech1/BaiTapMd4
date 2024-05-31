@@ -1,0 +1,32 @@
+plugins {
+    id 'java'
+    id 'war'
+}
+
+group = 'org.shiba'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'javax.servlet', name: 'javax.servlet-api', version: '3.1.0'
+
+    compile group: 'org.springframework', name: 'spring-core', version: '4.3.17.RELEASE'
+    compile group: 'org.springframework', name: 'spring-context', version: '4.3.17.RELEASE'
+    compile group: 'org.springframework', name: 'spring-beans', version: '4.3.17.RELEASE'
+    compile group: 'org.springframework', name: 'spring-web', version: '4.3.17.RELEASE'
+    compile group: 'org.springframework', name: 'spring-webmvc', version: '4.3.17.RELEASE'
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    implementation group: 'com.google.code.gson', name: 'gson', version: '2.11.0'
+    compileOnly "org.projectlombok:lombok:1.18.24"
+    annotationProcessor "org.projectlombok:lombok:1.18.24"
+    implementation group: 'jstl', name: 'jstl', version: '1.2'
+    implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.33'
+}
+
+test {
+    useJUnitPlatform()
+}
